@@ -1,0 +1,7 @@
+.*
+!.gitignore
+!.ocamlformat
+
+# OCaml artifacts
+_build
+_opam
