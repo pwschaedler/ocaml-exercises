@@ -8,6 +8,8 @@ let rec last (l : 'a list) : 'a option =
 let%test _ = last [ "a"; "b"; "c"; "d" ] = Some "d"
 let%test _ = last [] = None
 
+(* ========================================================================== *)
+
 (* Last Two Elements of a List *)
 (* Alternative syntax:
    let rec last_two (l : 'a list) : 'a option = match l with *)
@@ -18,6 +20,8 @@ let rec last_two = function
 
 let%test _ = last_two [ "a"; "b"; "c"; "d" ] = Some ("c", "d")
 let%test _ = last_two [ "a" ] = None
+
+(* ========================================================================== *)
 
 (* N'th Element of a List *)
 let rec at idx l =
@@ -35,3 +39,16 @@ let rec at idx l =
 
 let%test _ = at 2 [ "a"; "b"; "c"; "d"; "e" ] = Some "c"
 let%test _ = at 2 [ "a" ] = None
+
+(* ========================================================================== *)
+
+(* Length of a List *)
+let length l =
+  let rec helper acc = function
+    | [] -> acc
+    | _ :: xs -> helper (acc + 1) xs
+  in
+  helper 0 l
+
+let%test _ = length [ "a"; "b"; "c" ] = 3
+let%test _ = length [] = 0
